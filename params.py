@@ -1,9 +1,9 @@
 PICTURE_SIZE = 256
 PICTURE = 'meta_15_600x600.png'
 PIC_NUM = 100
-PIC_NUM_VALIDATE = 1000
+PIC_NUM_VALIDATE = 200
 NOISE_CREATE = 2.5
 NOISE_TEST = 2.15
-MODEL_NAME = 'my_50_epoch_5009_slika_v8_checkpoint.pth.tar'
+MODEL_NAME = "model_2.tar"
 LR = 0.001
 EPOCHS = 20
