@@ -12,7 +12,7 @@ def trace(inCsvFile, row):
 def main():
     tracedxy = open("traced_video.csv").read().split()[:-1]
     header = tracedxy.pop(0)
-    tp = r"untraced_target.jpg"
+    tp = r"my_datasets\untraced_target.jpg"
     lb = r"traced_target.jpg"
     lb_frame = r"traced_target.jpg"
 

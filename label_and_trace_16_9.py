@@ -38,6 +38,17 @@ def iou(params0, params1):
     return shape0.intersection(shape1).area / shape0.union(shape1).area
 
 
+def draw_detected_1_1(detected, tp, lb):
+
+    x, y, r = detected
+    valid_pic = Image.open(tp).convert("RGB")
+    valid_pic = valid_pic.resize((256, 256))
+    draw = ImageDraw.Draw(valid_pic)
+    draw.ellipse([(y - r, x - r), (y + r, x + r)], outline=(255, 0, 0))
+    draw.ellipse([(y - 1, x - 1), (y + 1, x + 1)], outline=(255, 0, 0))
+    valid_pic.save(lb)
+
+
 def draw_detected_16_9(detected, tp, lb):
 
     y, x, r = detected

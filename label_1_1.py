@@ -1,8 +1,3 @@
-"""
-Koristi puno koda koji je postojao vec i mora se nastimavat ovisno o slici, ali sluzi za crtanje crvenog kruga
-na zadanoj pravoj slici
-"""
-
 import imageio
 import numpy as np
 from shapely.geometry.point import Point
@@ -141,15 +136,15 @@ def draw_detected_16_9(detected, tp, lb):
 def main():
     model_name = f'saved_models/{MODEL_NAME}'
 
-    for i in range(330):
-        tp = rf'C:\Users\nikol\Desktop\vid_16_9\frame{i}.jpg'
+    for i in range(NUM_OF_FRAMES):
+        tp = rf'frame{i}.jpg'
 
         img = Image.open(tp).convert("L")
         img = img.resize((256, 256))
         img = np.array(img)
 
         detected = find_circle(img, model_name)
-        lb = rf'C:\Users\nikol\Desktop\vid_16_9_lab\frame{i}.jpg'
+        lb = rf'frame{i}.jpg'
         draw_detected_16_9(detected, tp, lb)
 
 
