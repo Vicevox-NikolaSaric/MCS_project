@@ -25,12 +25,10 @@ def main():
     draw = ImageDraw.Draw(img)
     scale = 1
     for i in range(len(xydata) - 1):
-        lb_frame = f"my_datasets\\test_video_trace\\frame{i}.jpg"
+        lb_frame = rf"frame{i}.jpg"
         draw.line([xydata[i], xydata[i + 1]], fill="red", width=2)
         draw.ellipse([(1080 // 2 - 5, 1080 // 2 - 5), (1080 // 2 + 5, 1080 // 2 + 5)], fill="blue", outline="blue")
         img.save(lb_frame)
-
-
 
     img.save(lb)
     pass

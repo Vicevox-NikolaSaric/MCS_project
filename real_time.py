@@ -1,7 +1,3 @@
-"""
-Trenutno se ne koristi, prima na ulaz real time feed web kamere, vjerojatno ni nece trebat
-"""
-
 # importing required libraries
 import cv2  # OpenCV library
 import time  # time library
