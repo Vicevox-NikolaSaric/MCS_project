@@ -36,7 +36,7 @@ def meta_perimeter(x, y, r, img):
 
 
 def draw_circle(img, row, col, rad):
-    meta = Image.open(f'my_datasets/targets/{PICTURE}').convert("L")
+    meta = Image.open(f'my_datasets/targets_1_1/{PICTURE}').convert("L")
     new_h, new_w = 2*rad + 1, 2*rad + 1
     meta = meta.resize((new_h, new_w))
     meta = np.array(meta)

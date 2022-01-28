@@ -23,11 +23,11 @@ def main():
             rand_row = random.randint(-(pic_size//2) + 10, 256 - (pic_size//2) - 10)
 
             BG = random.randint(1, 7)
-            bg = Image.open(rf'my_datasets/targets/bg_{BG}.jpg').convert("L")
+            bg = Image.open(rf'my_datasets/targets_1_1/bg_{BG}.jpg').convert("L")
             bg = bg.resize((256, 256))
 
             FG = random.randint(1, 3)
-            fg = Image.open(rf'my_datasets/targets/fg_{FG}.jpg').convert("L")
+            fg = Image.open(rf'my_datasets/targets_1_1/fg_{FG}.jpg').convert("L")
             fg = fg.resize((pic_size, pic_size))
 
             new_col = round(COL_RESIZE[FG - 1] * pic_size) + rand_col

@@ -41,7 +41,7 @@ def meta_perimeter(x, y, r, img):
 
 
 def draw_meta(img, row, col, rad):
-    meta = Image.open(f'my_datasets/targets/{PICTURE}').convert("L")
+    meta = Image.open(f'my_datasets/targets_1_1/{PICTURE}').convert("L")
     h, w = meta.size
     new_h, new_w = 2 * rad + 1, 2 * rad + 1
     meta = meta.resize((new_h, new_w))

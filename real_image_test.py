@@ -106,7 +106,7 @@ def iou(params0, params1):
     return shape0.intersection(shape1).area / shape0.union(shape1).area
 
 
-def draw_detected(detected, tp, lb):
+def draw_detected_1_1(detected, tp, lb):
 
     x, y, r = detected
     valid_pic = Image.open(tp).convert("RGB")
@@ -121,24 +121,36 @@ def draw_detected(detected, tp, lb):
     valid_pic.save(lb)
 
 
+def draw_detected_16_9(detected, tp, lb):
+
+    x, y, r = detected
+    valid_pic = Image.open(tp).convert("RGB")
+    # valid_pic = valid_pic.resize((455, 256))
+
+    # Stretch y
+    y = round(y * (1920./256.))
+    x = round(x * (1080./256.))
+    r = round(r * (1080./256.))
+
+    draw = ImageDraw.Draw(valid_pic)
+    draw.ellipse([(y - r, x - r), (y + r, x + r)], outline=(255, 0, 0))
+    draw.ellipse([(y - 1, x - 1), (y + 1, x + 1)], outline=(255, 0, 0))
+    valid_pic.save(lb)
+
+
 def main():
     model_name = f'saved_models/{MODEL_NAME}'
 
-    for i in range(312):
-        tp = rf'C:\Users\nikol\Desktop\vid\frame{i}.jpg'
+    for i in range(330):
+        tp = rf'C:\Users\nikol\Desktop\vid_16_9\frame{i}.jpg'
 
         img = Image.open(tp).convert("L")
         img = img.resize((256, 256))
-        enhancer = ImageEnhance.Brightness(img)
-        img = enhancer.enhance(1.05)
-        enhancer = ImageEnhance.Contrast(img)
-        img = enhancer.enhance(0.95)
         img = np.array(img)
 
         detected = find_circle(img, model_name)
-        # print(detected)
-        lb = rf'C:\Users\nikol\Desktop\vid_lab\frame{i}_lab.jpg'
-        draw_detected(detected, tp, lb)
+        lb = rf'C:\Users\nikol\Desktop\vid_16_9_lab\frame{i}.jpg'
+        draw_detected_16_9(detected, tp, lb)
 
 
 if __name__ == '__main__':
